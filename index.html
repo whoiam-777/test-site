@@ -1,35 +1,31 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Эвакуатор и Манипулятор 24/7. Премиум сервис, быстрая подача, опытные водители. Звоните Ержану: +7 747 464-00-78.">
-    <meta name="keywords" content="эвакуатор, манипулятор, автопомощь, перевозка авто, спецтехника">
+    <meta name="description" content="Эвакуатор и Манипулятор в Астане. Премиум услуги, быстрая подача, круглосуточно. Ержан +7 747 464-00-78">
+    <meta name="keywords" content="эвакуатор, манипулятор, услуги эвакуатора, автопомощь">
     <title>Эвакуатор и Манипулятор | Premium Service</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600&family=Montserrat:wght@500;700;800&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
+        /* --- 1. BASIC SETUP & VARIABLES --- */
         :root {
-            /* Palette - Premium Dark */
-            --bg-dark: #0b0e14;
-            --bg-card: #151a23;
-            --text-main: #e2e8f0;
-            --text-muted: #94a3b8;
-            
-            /* Accents */
-            --gold: #d4af37;
-            --gold-gradient: linear-gradient(135deg, #d4af37 0%, #aa842c 100%);
-            --red-accent: #ef4444;
-            
-            /* Effects */
-            --glass: rgba(21, 26, 35, 0.7);
-            --border-glass: rgba(255, 255, 255, 0.08);
-            --shadow-glow: 0 0 20px rgba(212, 175, 55, 0.15);
+            --bg-dark: #0f1014;
+            --bg-card: #16181d;
+            --accent-gold: #c5a059; /* Холодное золото */
+            --accent-platinum: #e5e4e2;
+            --text-main: #f0f0f0;
+            --text-muted: #a0a0a0;
+            --danger: #cf3434; /* Холодный красный */
+            --font-head: 'Montserrat', sans-serif;
+            --font-body: 'Manrope', sans-serif;
             --transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
@@ -37,7 +33,6 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
         }
 
         html {
@@ -45,600 +40,568 @@
         }
 
         body {
-            font-family: 'Manrope', sans-serif;
             background-color: var(--bg-dark);
             color: var(--text-main);
-            overflow-x: hidden;
+            font-family: var(--font-body);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        /* --- Typography & Utils --- */
-        h1, h2, h3 {
-            font-weight: 800;
-            line-height: 1.2;
+        h1, h2, h3, h4 {
+            font-family: var(--font-head);
             color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
 
         .container {
-            width: 100%;
+            width: 90%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 15px;
         }
 
-        .gold-text {
-            color: var(--gold);
-            background: var(--gold-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
+        /* --- 2. UI ELEMENTS --- */
         .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
+            display: inline-block;
             padding: 16px 32px;
-            border-radius: 50px;
+            border-radius: 4px;
             font-weight: 700;
+            font-family: var(--font-head);
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            text-decoration: none;
-            cursor: pointer;
+            font-size: 0.9rem;
             transition: var(--transition);
+            cursor: pointer;
+            border: none;
             position: relative;
             overflow: hidden;
         }
 
-        .btn-primary {
-            background: var(--gold-gradient);
+        .btn-gold {
+            background: linear-gradient(135deg, #d4af37 0%, #c5a059 100%);
             color: #000;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            box-shadow: 0 4px 15px rgba(197, 160, 89, 0.3);
         }
 
-        .btn-primary:hover {
+        .btn-gold:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
+            box-shadow: 0 8px 25px rgba(197, 160, 89, 0.5);
         }
 
         .btn-outline {
             background: transparent;
-            border: 2px solid var(--gold);
-            color: var(--gold);
+            border: 2px solid var(--accent-gold);
+            color: var(--accent-gold);
         }
 
         .btn-outline:hover {
-            background: rgba(212, 175, 55, 0.1);
-            color: #fff;
-            border-color: #fff;
+            background: var(--accent-gold);
+            color: #000;
         }
 
-        /* --- Loader --- */
-        #loader {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: var(--bg-dark);
-            z-index: 9999;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            transition: opacity 0.5s ease;
-        }
-        
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 3px solid rgba(212, 175, 55, 0.3);
-            border-radius: 50%;
-            border-top-color: var(--gold);
-            animation: spin 1s ease-in-out infinite;
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #fff, #999);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        @keyframes spin { to { transform: rotate(360deg); } }
+        .section-subtitle {
+            text-align: center;
+            color: var(--accent-gold);
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 3rem;
+            font-weight: 700;
+        }
 
-        /* --- Header --- */
+        section {
+            padding: 80px 0;
+        }
+
+        /* --- 3. HEADER & HERO --- */
         header {
-            position: absolute;
+            position: fixed;
             top: 0;
             width: 100%;
-            z-index: 10;
-            padding: 20px 0;
+            z-index: 1000;
+            background: rgba(15, 16, 20, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding: 15px 0;
         }
 
-        .nav-content {
+        .nav-wrapper {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .logo {
-            font-size: 1.5rem;
             font-weight: 800;
+            font-size: 1.2rem;
             color: #fff;
-            text-transform: uppercase;
-            letter-spacing: 1px;
         }
-
-        .logo span { color: var(--gold); }
-
-        .header-contact {
-            text-align: right;
-        }
+        .logo span { color: var(--accent-gold); }
 
         .header-phone {
-            display: block;
-            font-size: 1.2rem;
             font-weight: 700;
             color: #fff;
-            text-decoration: none;
-        }
-
-        .header-name {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            display: block;
-        }
-
-        /* --- Hero Section --- */
-        .hero {
-            position: relative;
-            height: 100vh;
-            min-height: 600px;
             display: flex;
             align-items: center;
-            background: linear-gradient(rgba(11, 14, 20, 0.8), rgba(11, 14, 20, 0.9)), 
-                        url('https://images.unsplash.com/photo-1594073380486-1d1209b555e7?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover;
+            gap: 10px;
         }
 
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            margin-bottom: 40px;
-            max-width: 500px;
-        }
-
-        .hero-btns {
+        .hero {
+            height: 100vh;
+            min-height: 600px;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1629813292418-c2668b81368f?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
             display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        /* --- Animations --- */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* --- Services --- */
-        .section {
-            padding: 100px 0;
+            align-items: center;
+            text-align: center;
             position: relative;
         }
 
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            line-height: 1.1;
+            margin-bottom: 20px;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        .section-title h2 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            color: #ccc;
         }
 
-        .section-title span {
-            color: var(--gold);
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            letter-spacing: 2px;
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .floating-phone {
+            font-size: 2rem;
+            color: #fff;
+            margin-top: 30px;
+            display: block;
             font-weight: 700;
         }
 
+        /* --- 4. SERVICES --- */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
         }
 
         .service-card {
             background: var(--bg-card);
-            border: 1px solid var(--border-glass);
-            padding: 40px;
-            border-radius: 20px;
+            padding: 40px 30px;
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 8px;
             transition: var(--transition);
             position: relative;
             overflow: hidden;
-            cursor: pointer;
         }
 
         .service-card:hover {
             transform: translateY(-10px);
-            border-color: var(--gold);
-            box-shadow: var(--shadow-glow);
+            border-color: var(--accent-gold);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
 
         .service-icon {
             font-size: 3rem;
-            color: var(--gold);
+            color: var(--accent-gold);
             margin-bottom: 20px;
         }
 
         .service-card h3 {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             margin-bottom: 15px;
         }
 
         .service-card p {
             color: var(--text-muted);
+            font-size: 0.95rem;
         }
 
-        /* --- Stats / Advantages --- */
-        .stats {
-            background: linear-gradient(rgba(11, 14, 20, 0.9), rgba(11, 14, 20, 0.9)),
-                        url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&q=80') center/cover;
-            background-attachment: fixed; /* Parallax */
-            padding: 80px 0;
-            text-align: center;
+        /* --- 5. ADVANTAGES (COUNTERS) --- */
+        .stats-section {
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1580901368919-79848a43ade3?q=80&w=2070&auto=format&fit=crop') center/cover fixed;
+            padding: 100px 0;
         }
 
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 40px;
+            text-align: center;
         }
 
         .stat-item h3 {
-            font-size: 3rem;
-            color: var(--gold);
+            font-size: 3.5rem;
+            color: var(--accent-gold);
             margin-bottom: 10px;
         }
 
         .stat-item p {
-            color: #fff;
+            font-size: 1.1rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            font-size: 0.9rem;
         }
 
-        /* --- Fleet (Slider Mockup) --- */
-        .fleet-wrapper {
-            display: flex;
-            overflow-x: auto;
-            gap: 20px;
-            padding-bottom: 20px;
-            scrollbar-width: none; /* Hide scrollbar Firefox */
-        }
-        .fleet-wrapper::-webkit-scrollbar { display: none; }
-
-        .fleet-card {
-            min-width: 300px;
-            background: var(--bg-card);
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid var(--border-glass);
-        }
-
-        .fleet-img {
-            width: 100%;
-            height: 200px;
-            background-color: #222;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #444;
-        }
-        
-        .fleet-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .fleet-info {
-            padding: 20px;
-        }
-
-        .fleet-info h4 { margin-bottom: 10px; color: #fff; }
-        .specs { display: flex; justify-content: space-between; font-size: 0.9rem; color: var(--text-muted); }
-
-        /* --- Process --- */
+        /* --- 6. PROCESS (STEPS) --- */
         .process-steps {
             display: flex;
-            flex-direction: column;
-            gap: 30px;
-            max-width: 800px;
-            margin: 0 auto;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            counter-reset: step;
         }
 
         .step {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            background: rgba(255,255,255,0.03);
-            padding: 20px;
-            border-radius: 15px;
-            border: 1px solid transparent;
-        }
-
-        .step:hover { border-color: var(--gold); }
-
-        .step-num {
-            font-size: 2rem;
-            font-weight: 800;
-            color: rgba(255,255,255,0.1);
-            min-width: 50px;
-        }
-
-        .step-content h4 { color: var(--gold); margin-bottom: 5px; }
-
-        /* --- Pricing --- */
-        .price-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-glass);
-            padding: 40px;
-            border-radius: 20px;
+            flex: 1 1 200px;
             text-align: center;
+            padding: 20px;
             position: relative;
         }
-        
-        .price-card.featured {
-            border-color: var(--gold);
-            transform: scale(1.05);
-            z-index: 2;
-        }
 
-        .price-val {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin: 20px 0;
-            color: #fff;
-        }
-        
-        .price-val span { font-size: 1rem; color: var(--text-muted); font-weight: 400; }
-
-        /* --- Contact --- */
-        .contact-box {
-            background: linear-gradient(135deg, #1e2532 0%, #11151e 100%);
-            padding: 60px;
-            border-radius: 30px;
-            text-align: center;
-            border: 1px solid var(--border-glass);
-        }
-
-        .big-phone {
-            font-size: clamp(2rem, 5vw, 4rem);
-            font-weight: 800;
-            color: #fff;
-            text-decoration: none;
-            display: block;
-            margin: 20px 0;
-            transition: var(--transition);
-        }
-        
-        .big-phone:hover { color: var(--gold); }
-
-        .contact-person {
-            font-size: 1.5rem;
-            color: var(--gold);
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-
-        /* --- Floating Button --- */
-        .float-btn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 70px;
-            height: 70px;
-            background: var(--gold);
+        .step-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--bg-card);
+            border: 2px solid var(--accent-gold);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #000;
-            font-size: 1.8rem;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
-            z-index: 100;
-            text-decoration: none;
-            animation: pulse 2s infinite;
+            font-size: 1.5rem;
+            margin: 0 auto 20px;
+            color: var(--accent-gold);
+            position: relative;
+            z-index: 2;
         }
 
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
-            70% { box-shadow: 0 0 0 20px rgba(212, 175, 55, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+        .step h4 { margin-bottom: 10px; }
+        .step p { color: var(--text-muted); font-size: 0.9rem; }
+
+        /* --- 7. FLEET (Simple Slider) --- */
+        .slider-container {
+            overflow-x: auto;
+            display: flex;
+            gap: 20px;
+            padding-bottom: 20px;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none; /* Firefox */
+        }
+        .slider-container::-webkit-scrollbar { display: none; }
+
+        .slide {
+            min-width: 300px;
+            flex: 0 0 auto;
+            scroll-snap-align: center;
+            background: var(--bg-card);
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
         }
 
-        footer {
-            padding: 40px 0;
+        .slide img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            filter: grayscale(30%);
+            transition: var(--transition);
+        }
+
+        .slide:hover img { filter: grayscale(0%); }
+
+        .slide-info {
+            padding: 20px;
+        }
+
+        .slide-info h4 { font-size: 1.1rem; margin-bottom: 5px; }
+        .slide-info span { color: var(--accent-gold); font-size: 0.9rem; }
+
+        /* --- 8. PRICES --- */
+        .prices-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .price-card {
+            background: var(--bg-card);
+            padding: 40px;
             text-align: center;
-            border-top: 1px solid var(--border-glass);
-            color: var(--text-muted);
-            font-size: 0.9rem;
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 8px;
         }
 
-        /* --- Mobile Adaptations --- */
+        .price-card h3 { color: var(--text-muted); font-size: 1rem; margin-bottom: 20px; }
+        .price-amount { font-size: 2.5rem; font-weight: 800; color: #fff; margin-bottom: 10px; }
+        .price-sub { font-size: 0.9rem; color: var(--accent-gold); margin-bottom: 30px; display: block; }
+        .price-disclaimer { font-size: 0.75rem; color: #666; margin-top: 15px; }
+
+        /* --- 9. CONTACTS & FOOTER --- */
+        .contact-section {
+            background: #000;
+            padding: 80px 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info h2 { margin-bottom: 20px; }
+        .contact-row {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .contact-row i {
+            font-size: 1.5rem;
+            color: var(--accent-gold);
+        }
+        .contact-row div span { display: block; color: var(--text-muted); font-size: 0.9rem; }
+        .contact-row div strong { font-size: 1.2rem; }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
+            background: transparent;
+            border: 1px solid #333;
+            color: #fff;
+            font-family: var(--font-body);
+            border-radius: 4px;
+        }
+        .contact-form input:focus, .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+        }
+
+        /* --- 10. MOBILE BOTTOM BAR --- */
+        .mobile-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            z-index: 1000;
+            display: none; /* Shown on mobile via media query */
+        }
+        .mobile-btn {
+            flex: 1;
+            padding: 15px;
+            text-align: center;
+            color: #fff;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+        }
+        .mob-call { background: #333; }
+        .mob-wa { background: #25D366; }
+
+        /* --- ANIMATIONS --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- MEDIA QUERIES --- */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .hero-btns { flex-direction: column; width: 100%; }
-            .btn { width: 100%; }
-            .section { padding: 60px 0; }
-            .contact-box { padding: 30px; }
-            .price-card.featured { transform: scale(1); }
-            .header-phone { display: none; } /* Hide in header on small mobile, rely on CTA */
-            .logo { font-size: 1.2rem; }
+            .hero-content h1 { font-size: 2.2rem; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .mobile-bar { display: flex; }
+            .header-phone { display: none; }
+            body { padding-bottom: 50px; } /* Space for mobile bar */
+            .step::after { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <div id="loader">
-        <div class="spinner"></div>
-        <p style="margin-top: 20px; color: var(--gold); font-weight: 600; letter-spacing: 2px;">ЗАГРУЗКА...</p>
-    </div>
-
     <header>
-        <div class="container nav-content">
-            <div class="logo">Auto<span>Rescue</span></div>
-            <div class="header-contact">
-                <a href="tel:+77474640078" class="header-phone">+7 747 464-00-78</a>
-                <span class="header-name">Ержан (24/7)</span>
-            </div>
+        <div class="container nav-wrapper">
+            <div class="logo">ЕРЖАН <span>.TOWING</span></div>
+            <a href="tel:+77474640078" class="header-phone">
+                <i class="fas fa-phone-alt"></i> +7 747 464-00-78
+            </a>
         </div>
     </header>
 
-    <section class="hero">
+    <section class="hero" id="home">
         <div class="container hero-content">
-            <h1>ЭВАКУАТОР <br> <span class="gold-text">И МАНИПУЛЯТОР</span></h1>
-            <p>Профессиональная помощь на дороге. Быстрая подача, современная техника и бережное отношение к вашему авто.</p>
-            <div class="hero-btns">
-                <a href="tel:+77474640078" class="btn btn-primary">
-                    <i class="fa-solid fa-phone"></i> Позвонить Ержану
-                </a>
-                <a href="#services" class="btn btn-outline">
-                    Услуги
-                </a>
+            <h1 class="reveal">Эвакуатор и <br><span style="color:var(--accent-gold)">Манипулятор 24/7</span></h1>
+            <p class="reveal">Быстро. Надёжно. Круглосуточно.</p>
+            
+            <div class="hero-buttons reveal">
+                <a href="tel:+77474640078" class="btn btn-gold">Позвонить Ержану</a>
+                <a href="https://wa.me/77474640078" class="btn btn-outline">Написать в WhatsApp</a>
             </div>
+
+            <a href="tel:+77474640078" class="floating-phone reveal">+7 747 464-00-78</a>
         </div>
     </section>
 
-    <section class="stats">
+    <section id="services">
         <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item reveal">
-                    <h3 data-target="10">0</h3>
-                    <p>Лет опыта</p>
-                </div>
-                <div class="stat-item reveal">
-                    <h3 data-target="15000">0</h3>
-                    <p>Заказов выполнено</p>
-                </div>
-                <div class="stat-item reveal">
-                    <h3 data-target="20">0</h3>
-                    <p>Минут подача</p>
-                </div>
-                <div class="stat-item reveal">
-                    <h3>24/7</h3>
-                    <p>Режим работы</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="services" class="section">
-        <div class="container">
-            <div class="section-title reveal">
-                <span>Что мы делаем</span>
-                <h2>Наши Услуги</h2>
-            </div>
+            <h2 class="section-title reveal">Наши Услуги</h2>
+            <p class="section-subtitle reveal">Полный спектр помощи на дороге</p>
+            
             <div class="services-grid">
                 <div class="service-card reveal">
-                    <i class="fa-solid fa-car-side service-icon"></i>
-                    <h3>Эвакуатор легковых</h3>
-                    <p>Бережная погрузка и транспортировка седанов, хэтчбеков и купе. Полная страховка.</p>
+                    <i class="fas fa-car-crash service-icon"></i>
+                    <h3>Эвакуация авто</h3>
+                    <p>Бережная погрузка легковых автомобилей. Любая сложность поломки.</p>
                 </div>
                 <div class="service-card reveal">
-                    <i class="fa-solid fa-truck-monster service-icon"></i>
-                    <h3>Внедорожники / Джипы</h3>
-                    <p>Мощная техника для тяжелых автомобилей. Работаем в сложных условиях.</p>
+                    <i class="fas fa-truck-pickup service-icon"></i>
+                    <h3>Внедорожники</h3>
+                    <p>Мощная техника для эвакуации джипов и тяжелых внедорожников.</p>
                 </div>
                 <div class="service-card reveal">
-                    <i class="fa-solid fa-truck-pickup service-icon"></i>
-                    <h3>Манипулятор</h3>
-                    <p>Погрузка с помощью крана. Идеально для авто без колес, заблокированных КПП или грузов.</p>
+                    <i class="fas fa-truck-loading service-icon"></i>
+                    <h3>Услуги Манипулятора</h3>
+                    <p>Погрузка и перевозка грузов, стройматериалов, бытовок.</p>
                 </div>
                 <div class="service-card reveal">
-                    <i class="fa-solid fa-road service-icon"></i>
+                    <i class="fas fa-road service-icon"></i>
                     <h3>Межгород</h3>
-                    <p>Транспортировка автомобилей по Казахстану. Надежно и в срок.</p>
-                </div>
-                <div class="service-card reveal">
-                    <i class="fa-solid fa-hard-hat service-icon"></i>
-                    <h3>Спецтехника</h3>
-                    <p>Перевозка катков, погрузчиков и строительного оборудования до 5 тонн.</p>
-                </div>
-                <div class="service-card reveal">
-                    <i class="fa-solid fa-clock service-icon"></i>
-                    <h3>Срочный вызов</h3>
-                    <p>Приоритетная подача машины в любую точку города за 15-20 минут.</p>
+                    <p>Транспортировка автомобилей по Казахстану и СНГ. Безопасно.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section" style="background: #11151e;">
-        <div class="container">
-            <div class="section-title reveal">
-                <span>Автопарк</span>
-                <h2>Наша Техника</h2>
+    <section class="stats-section">
+        <div class="container stats-grid">
+            <div class="stat-item reveal">
+                <h3>24/7</h3>
+                <p>Работаем</p>
             </div>
-            <div class="fleet-wrapper reveal">
-                <div class="fleet-card">
-                    <div class="fleet-img">
-                        <i class="fa-solid fa-truck-ramp-box fa-3x"></i>
-                    </div>
-                    <div class="fleet-info">
-                        <h4>Hyundai Mighty</h4>
-                        <div class="specs"><span>Г/П: 3.5т</span><span>Платформа</span></div>
+            <div class="stat-item reveal">
+                <h3>15</h3>
+                <p>Минут подача</p>
+            </div>
+            <div class="stat-item reveal">
+                <h3>10+</h3>
+                <p>Лет опыта</p>
+            </div>
+            <div class="stat-item reveal">
+                <h3>100%</h3>
+                <p>Безопасность</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="fleet">
+        <div class="container">
+            <h2 class="section-title reveal">Наша Техника</h2>
+            <p class="section-subtitle reveal">Современный автопарк</p>
+
+            <div class="slider-container reveal">
+                <div class="slide">
+                    <img src="https://images.unsplash.com/photo-1605218427306-022248ce8f66?q=80&w=2067&auto=format&fit=crop" alt="Эвакуатор">
+                    <div class="slide-info">
+                        <h4>Mercedes-Benz Atego</h4>
+                        <span>Эвакуатор со сдвижной платформой</span>
                     </div>
                 </div>
-                <div class="fleet-card">
-                    <div class="fleet-img">
-                        <i class="fa-solid fa-truck-pickup fa-3x"></i>
-                    </div>
-                    <div class="fleet-info">
-                        <h4>Isuzu Manipulator</h4>
-                        <div class="specs"><span>Стрела: 3т</span><span>Борт: 5т</span></div>
+                <div class="slide">
+                    <img src="https://plus.unsplash.com/premium_photo-1661962947656-e975a59a727d?q=80&w=2070&auto=format&fit=crop" alt="Манипулятор">
+                    <div class="slide-info">
+                        <h4>ISUZU Forward</h4>
+                        <span>Манипулятор 5 тонн</span>
                     </div>
                 </div>
-                <div class="fleet-card">
-                    <div class="fleet-img">
-                        <i class="fa-solid fa-truck-field fa-3x"></i>
-                    </div>
-                    <div class="fleet-info">
-                        <h4>GAZ Next</h4>
-                        <div class="specs"><span>Г/П: 2.5т</span><span>Город</span></div>
+                <div class="slide">
+                    <img src="https://images.unsplash.com/photo-1599388168697-7e6cb9516629?q=80&w=2069&auto=format&fit=crop" alt="Эвакуатор">
+                    <div class="slide-info">
+                        <h4>GAZelle Next</h4>
+                        <span>Для легковых авто и узких улиц</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section">
+    <section id="process">
         <div class="container">
-            <div class="section-title reveal">
-                <span>Процесс</span>
-                <h2>Как мы работаем</h2>
+            <h2 class="section-title reveal">Как мы работаем</h2>
+            <p class="section-subtitle reveal">Просто и прозрачно</p>
+
+            <div class="process-steps">
+                <div class="step reveal">
+                    <div class="step-icon"><i class="fas fa-phone"></i></div>
+                    <h4>Звонок</h4>
+                    <p>Вы звоните Ержану и сообщаете локацию</p>
+                </div>
+                <div class="step reveal">
+                    <div class="step-icon"><i class="fas fa-shipping-fast"></i></div>
+                    <h4>Выезд</h4>
+                    <p>Техника выезжает к вам немедленно</p>
+                </div>
+                <div class="step reveal">
+                    <div class="step-icon"><i class="fas fa-truck-loading"></i></div>
+                    <h4>Погрузка</h4>
+                    <p>Аккуратная погрузка вашего авто</p>
+                </div>
+                <div class="step reveal">
+                    <div class="step-icon"><i class="fas fa-check-circle"></i></div>
+                    <h4>Доставка</h4>
+                    <p>Доставка в пункт назначения</p>
+                </div>
             </div>
-            <div class="process-steps reveal">
-                <div class="step">
-                    <div class="step-num">01</div>
-                    <div class="step-content">
-                        <i class="fa-solid fa-phone-volume" style="color:var(--gold); margin-bottom:5px;"></i>
-                        <h4>Звонок Ержану</h4>
-                        <p style="font-size: 0.9
+        </div>
+    </section>
+
+    <section id="prices" style="background-color: #0c0d10;">
+        <div class="container">
+            <h2 class="section-title reveal">Цены</h2>
+            <p class="section-subtitle reveal">Честная стоимость без накруток</p>
+
+            <div class="prices-grid">
+                <div class="price-card reveal">
+                    <h3>Легковые авто</h3>
+                    <div class="price-amount">от 8 000 ₸</div>
+                    <span class="price-sub">По городу</span>
+                    <a href="tel:+77474640078" class="btn btn-outline">Заказать</a>
+                </div>
+                <div class="price-card reveal">
+                    <h3>Внедорожники</h3>
+                    <div class="price-amount">от 10 000 ₸</div>
+                    <span class="price-sub">По городу</span>
+                    <a href="tel:+77474640078" class="btn btn-outline">Заказать</a>
+                </div>
+                <div class="price-card reveal">
+                    <h3>Манипулятор</h3>
+                    <div class="price-amount">от 15 000 ₸</div>
+                    <span class="price-sub">Час / Рейс</span>
+                    <a href="tel:+77474640078" class="btn btn-outline">Заказать</a>
+                </div>
+            </div>
+            <p class="price-disclaimer" style="text-align: center;">* Итоговая стоимость зависит от сложности погрузки и расстояния. Звоните для точного расчета.</p>
+        </div>
+    </section>
+
+    <section id="contacts" class="contact-section">
+        <div class
