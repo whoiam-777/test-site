@@ -3,23 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ЕРЖАН | Platinum Service</title>
+    <title>МАНИПУЛЯТОР АЛМАТЫ | Ержан</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;600;800&family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --bg-dark: #02040a; /* Очень темный синий, почти черный */
-            --glass-bg: rgba(20, 30, 45, 0.7); /* Стекло с синим оттенком */
-            --glass-border: 1px solid rgba(255, 255, 255, 0.1);
-            
-            /* ГРАДИЕНТ ПЛАТИНЫ (Вместо золота) */
-            --platinum-gradient: linear-gradient(135deg, #e0e0e0, #ffffff, #a0a0a0);
-            --blue-glow: 0 0 15px rgba(0, 195, 255, 0.3);
-            --accent-blue: #00c3ff; /* Ледяной голубой */
-            
-            --font-main: 'Exo 2', sans-serif; /* Технологичный шрифт */
+            --bg-dark: #02040a;
+            --glass-bg: rgba(20, 30, 45, 0.85); /* Чуть темнее стекло для читаемости */
+            --glass-border: 1px solid rgba(255, 255, 255, 0.12);
+            --platinum-gradient: linear-gradient(135deg, #ffffff, #b0b0b0);
+            --accent-blue: #00c3ff;
+            --font-main: 'Exo 2', sans-serif;
             --font-head: 'Montserrat', sans-serif;
         }
 
@@ -30,158 +26,134 @@
             color: #fff;
             font-family: var(--font-main);
             overflow-x: hidden;
-            /* Фон: Ночной мегаполис в холодных тонах */
-            background-image: url('https://images.unsplash.com/photo-1542259681-d2c6762eb295?q=80&w=2600&auto=format&fit=crop');
+            /* ФОН: Спецтехника / Манипулятор в работе (Темная обработка) */
+            background-image: url('https://images.unsplash.com/photo-1531610666014-b1597d314856?q=80&w=2574&auto=format&fit=crop'); 
             background-attachment: fixed;
             background-size: cover;
             background-position: center;
             padding-bottom: 80px;
         }
         
-        /* Синяя вуаль поверх фона */
         body::before {
             content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(2, 4, 10, 0.85); z-index: -1; backdrop-filter: blur(3px);
+            background: rgba(2, 5, 15, 0.9); z-index: -1; backdrop-filter: blur(3px);
         }
 
         h1, h2, h3 { font-family: var(--font-head); text-transform: uppercase; letter-spacing: 0.5px; }
 
-        /* Текст с эффектом хрома */
         .platinum-text {
             background: var(--platinum-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             font-weight: 900;
-            text-shadow: 0px 5px 15px rgba(0,0,0,0.5);
+            text-shadow: 0px 5px 20px rgba(255,255,255,0.1);
         }
 
         .container { width: 90%; max-width: 1200px; margin: 0 auto; }
-        section { padding: 90px 0; }
+        section { padding: 80px 0; }
 
-        /* КАРТОЧКИ */
+        /* Карточки */
         .glass-card {
             background: var(--glass-bg);
             backdrop-filter: blur(15px);
             border: var(--glass-border);
-            border-radius: 12px; /* Более строгие углы */
-            padding: 40px;
+            border-radius: 16px;
+            padding: 35px;
             box-shadow: 0 15px 40px rgba(0,0,0,0.6);
             transition: 0.4s;
         }
         .glass-card:hover {
             border-color: var(--accent-blue);
-            box-shadow: 0 0 30px rgba(0, 195, 255, 0.2);
+            box-shadow: 0 0 30px rgba(0, 195, 255, 0.25);
+            transform: translateY(-5px);
         }
 
-        /* КНОПКА PLATINUM */
+        /* Кнопка с пульсацией */
         .btn-platinum {
-            display: inline-block; padding: 18px 45px;
-            background: linear-gradient(180deg, #fff, #b0b0b0); /* Эффект металла */
+            display: inline-block; padding: 20px 50px;
+            background: linear-gradient(180deg, #fff, #c0c0c0);
             color: #000;
             font-weight: 800; text-transform: uppercase; text-decoration: none;
-            border-radius: 4px; /* Квадратные углы - стиль авто */
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+            border-radius: 6px;
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
             transition: 0.3s; position: relative; overflow: hidden;
-            font-family: var(--font-head);
-            letter-spacing: 1px;
+            font-family: var(--font-head); letter-spacing: 1px;
+            animation: btn-pulse 2s infinite;
         }
-        .btn-platinum:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 0 40px rgba(255, 255, 255, 0.5);
+        
+        @keyframes btn-pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(255, 255, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
         }
 
-        /* КНОПКА OUTLINE (СИНЯЯ) */
         .btn-blue {
-            display: inline-block; padding: 16px 40px;
-            background: transparent; border: 1px solid var(--accent-blue);
-            color: var(--accent-blue); border-radius: 4px;
+            display: inline-block; padding: 18px 45px;
+            background: rgba(0, 195, 255, 0.05); border: 1px solid var(--accent-blue);
+            color: var(--accent-blue); border-radius: 6px;
             font-weight: 700; text-transform: uppercase; text-decoration: none;
             transition: 0.3s; letter-spacing: 1px;
-            box-shadow: 0 0 10px rgba(0, 195, 255, 0.1);
         }
-        .btn-blue:hover { background: rgba(0, 195, 255, 0.1); color: #fff; box-shadow: 0 0 20px rgba(0, 195, 255, 0.4); }
+        .btn-blue:hover { background: rgba(0, 195, 255, 0.15); color: #fff; box-shadow: 0 0 20px rgba(0, 195, 255, 0.4); }
 
-        header {
-            position: fixed; top: 0; width: 100%; z-index: 1000;
-            background: rgba(2, 4, 10, 0.9); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 20px 0;
-        }
-        .nav-box { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.5rem; font-weight: 900; color: #fff; letter-spacing: 2px; }
-        .logo span { color: var(--accent-blue); }
-        .head-phone { color: #fff; font-weight: 700; font-size: 1.1rem; text-decoration: none; display: flex; align-items: center; gap: 10px;}
-        .head-phone i { color: var(--accent-blue); }
-
-        /* HERO */
+        /* Hero секция */
         .hero {
-            height: 100vh; min-height: 600px; display: flex; align-items: center; justify-content: center; text-align: center;
+            height: 90vh; min-height: 550px; display: flex; align-items: center; justify-content: center; text-align: center;
         }
-        .hero h1 { font-size: clamp(2.5rem, 6vw, 5rem); line-height: 1.1; margin-bottom: 20px; }
-        .hero p { font-size: 1.2rem; color: #aab; margin-bottom: 40px; letter-spacing: 3px; text-transform: uppercase; }
-        .hero-btns { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+        .hero h1 { font-size: clamp(2.5rem, 6vw, 5rem); line-height: 1.05; margin-bottom: 25px; }
+        .hero p { font-size: 1.1rem; color: #aab; margin-bottom: 45px; letter-spacing: 2px; text-transform: uppercase; line-height: 1.5; max-width: 800px; margin-left: auto; margin-right: auto;}
+        .hero-btns { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; flex-direction: column; align-items: center; }
 
-        /* УСЛУГИ */
-        .section-title { text-align: center; margin-bottom: 60px; }
-        .section-title h2 { font-size: 2.5rem; margin-bottom: 10px; color: #fff; }
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-        .service-icon { font-size: 3rem; margin-bottom: 25px; color: var(--accent-blue); text-shadow: 0 0 20px rgba(0,195,255,0.5); }
-        .service-item h3 { margin-bottom: 15px; font-size: 1.4rem; color: #fff; }
-        .service-item p { color: #8faab9; line-height: 1.6; }
+        /* Услуги */
+        .section-title { text-align: center; margin-bottom: 50px; }
+        .section-title h2 { font-size: 2.2rem; margin-bottom: 10px; color: #fff; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .service-icon { font-size: 3rem; margin-bottom: 20px; color: var(--accent-blue); text-shadow: 0 0 25px rgba(0,195,255,0.6); }
+        .service-item h3 { margin-bottom: 10px; font-size: 1.4rem; color: #fff; }
+        .service-item p { color: #8faab9; line-height: 1.5; font-size: 0.95rem; }
 
-        /* ГАЛЕРЕЯ */
+        /* Галерея */
         .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .gallery-card { height: 320px; border-radius: 8px; overflow: hidden; position: relative; border: 1px solid rgba(255,255,255,0.1); }
-        .gallery-card img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; filter: grayscale(30%); }
+        .gallery-card { height: 280px; border-radius: 12px; overflow: hidden; position: relative; border: 1px solid rgba(255,255,255,0.1); }
+        .gallery-card img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; filter: grayscale(20%); }
         .gallery-card:hover img { transform: scale(1.1); filter: grayscale(0%); }
-        .overlay {
-            position: absolute; bottom: 0; left: 0; width: 100%; padding: 25px;
-            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
-        }
+        .overlay { position: absolute; bottom: 0; left: 0; width: 100%; padding: 20px; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); }
 
-        /* ЦИФРЫ И КОНТАКТЫ */
-        .stats-box { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 30px; text-align: center; }
-        .stat-num { font-size: 4rem; font-weight: 800; display: block; margin-bottom: 5px; color: var(--accent-blue); font-family: var(--font-head); }
-        .contact-wrap { display: flex; flex-wrap: wrap; gap: 50px; }
+        /* Контакты */
+        .stats-box { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; text-align: center; }
+        .stat-num { font-size: 3.5rem; font-weight: 800; display: block; margin-bottom: 5px; color: var(--accent-blue); font-family: var(--font-head); }
+        .contact-wrap { display: flex; flex-wrap: wrap; gap: 40px; }
         .contact-info { flex: 1; min-width: 300px; }
-        .contact-row {
-            display: flex; align-items: center; margin-bottom: 20px; padding: 20px;
-            background: rgba(255,255,255,0.02); border-left: 2px solid var(--accent-blue);
-        }
+        .contact-row { display: flex; align-items: center; margin-bottom: 15px; padding: 15px; background: rgba(255,255,255,0.03); border-left: 2px solid var(--accent-blue); border-radius: 0 8px 8px 0; }
         .contact-form { flex: 1; min-width: 300px; }
-        .inp {
-            width: 100%; padding: 20px; margin-bottom: 15px; background: rgba(0,0,0,0.3);
-            border: 1px solid #333; color: #fff; border-radius: 4px; font-family: var(--font-main);
-        }
+        .inp { width: 100%; padding: 18px; margin-bottom: 15px; background: rgba(0,0,0,0.4); border: 1px solid #333; color: #fff; border-radius: 6px; font-family: var(--font-main); }
         .inp:focus { border-color: var(--accent-blue); outline: none; box-shadow: 0 0 15px rgba(0,195,255,0.2); }
 
-        /* МОБИЛЬНАЯ ПАНЕЛЬ */
+        /* Мобильная панель */
         .mob-bar {
-            position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: 92%; max-width: 450px;
-            background: rgba(10, 20, 30, 0.95); backdrop-filter: blur(10px); padding: 8px; border-radius: 8px;
-            display: none; gap: 10px; z-index: 2000; border: 1px solid rgba(255,255,255,0.1);
+            position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: 94%; max-width: 450px;
+            background: rgba(12, 22, 35, 0.95); backdrop-filter: blur(12px); padding: 8px; border-radius: 12px;
+            display: none; gap: 10px; z-index: 2000; border: 1px solid rgba(255,255,255,0.15); box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
-        .mob-btn { flex: 1; text-align: center; padding: 15px; border-radius: 4px; font-weight: 700; text-transform: uppercase; text-decoration: none; font-size: 0.8rem;}
+        .mob-btn { flex: 1; text-align: center; padding: 14px; border-radius: 8px; font-weight: 700; text-transform: uppercase; text-decoration: none; font-size: 0.85rem;}
         .m-call { background: #fff; color: #000; }
         .m-wa { background: #25D366; color: #fff; }
 
         .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s ease; }
         .reveal.active { opacity: 1; transform: translateY(0); }
-        @media (max-width: 768px) { .mob-bar { display: flex; } .hero h1 { font-size: 2.5rem; } .head-phone { display: none; } }
+        @media (max-width: 768px) { .mob-bar { display: flex; } .hero h1 { font-size: 2.8rem; } }
     </style>
 </head>
 <body>
-        <header>
-        <div class="container nav-box">
-            <div class="logo">ЕРЖАН <span>.TOWING</span></div>
-            <a href="tel:+77474640078" class="head-phone"><i class="fas fa-phone-alt"></i> +7 747 464-00-78</a>
-        </div>
-    </header>
-
-    <section class="hero">
+        <section class="hero">
         <div class="container">
-            <h1 class="reveal platinum-text">Эвакуатор <br> Манипулятор</h1>
-            <p class="reveal">Астана • Premium Class • 24/7</p>
+            <p class="reveal" style="color:var(--accent-blue); font-weight:700; margin-bottom:10px;">ЕРЖАН .TOWING</p>
+            
+            <h1 class="reveal platinum-text">МАНИПУЛЯТОР <br> ЭВАКУАТОР</h1>
+            <p class="reveal">АЛМАТЫ • ПЕРЕВОЗКА ЛЮБОГО ВИДА И СЛОЖНОСТИ • 24/7</p>
+            
             <div class="hero-btns reveal">
-                <a href="tel:+77474640078" class="btn-platinum">Вызвать Сейчас</a>
+                <a href="tel:+77474640078" class="btn-platinum">Заказать Манипулятор</a>
                 <a href="https://wa.me/77474640078" class="btn-blue">Написать в WhatsApp</a>
             </div>
         </div>
@@ -193,20 +165,23 @@
                 <h2>Наши Услуги</h2>
             </div>
             <div class="services-grid">
+                
+                <div class="glass-card service-item reveal" data-tilt style="border-color: var(--accent-blue);">
+                    <div class="service-icon"><i class="fas fa-truck-loading"></i></div>
+                    <h3>Манипулятор 5Т</h3>
+                    <p>Профессиональная перевозка грузов, контейнеров, бытовок и стройматериалов. Вылет стрелы 10 метров. Аккуратная работа краном.</p>
+                </div>
+
                 <div class="glass-card service-item reveal" data-tilt>
-                    <div class="service-icon"><i class="fas fa-car"></i></div>
+                    <div class="service-icon"><i class="fas fa-cogs"></i></div>
+                    <h3>Сложная погрузка</h3>
+                    <p>Любая сложность, любая погрузка. Работа в стесненных условиях, вытаскивание из кюветов, перевернутые авто, заблокированные колеса.</p>
+                </div>
+
+                <div class="glass-card service-item reveal" data-tilt>
+                    <div class="service-icon"><i class="fas fa-car-crash"></i></div>
                     <h3>Эвакуация Авто</h3>
-                    <p>Безопасная транспортировка автомобилей премиум-класса. Гарантия сохранности кузова.</p>
-                </div>
-                <div class="glass-card service-item reveal" data-tilt>
-                    <div class="service-icon"><i class="fas fa-truck-pickup"></i></div>
-                    <h3>Сложная Погрузка</h3>
-                    <p>Работа с заблокированными колесами, вылет с трассы, кюветные работы любой сложности.</p>
-                </div>
-                <div class="glass-card service-item reveal" data-tilt>
-                    <div class="service-icon"><i class="fas fa-cubes"></i></div>
-                    <h3>Манипулятор 5т</h3>
-                    <p>Перевозка стройматериалов, контейнеров и бытовок. Вылет стрелы 10 метров.</p>
+                    <p>Транспортировка легковых авто и джипов по Алматы и области. Быстрая подача и полная безопасность.</p>
                 </div>
             </div>
         </div>
@@ -215,20 +190,20 @@
     <section>
         <div class="container">
             <div class="section-title reveal">
-                <h2 class="platinum-text">Автопарк</h2>
+                <h2 class="platinum-text">Техника</h2>
             </div>
             <div class="gallery-grid">
                 <div class="gallery-card reveal">
-                    <img src="https://images.unsplash.com/photo-1599388168697-7e6cb9516629?q=80&w=2069" alt="Эвакуатор">
-                    <div class="overlay"><h4 style="color:#fff">Mercedes-Benz</h4><span style="color:#aaa">Сдвижная платформа</span></div>
-                </div>
-                <div class="gallery-card reveal">
                     <img src="https://plus.unsplash.com/premium_photo-1661962947656-e975a59a727d?q=80&w=2070" alt="Манипулятор">
-                    <div class="overlay"><h4 style="color:#fff">ISUZU Forward</h4><span style="color:#aaa">Манипулятор</span></div>
+                    <div class="overlay"><h4 style="color:#fff">Манипулятор 5т</h4><span style="color:#aaa">ISUZU Forward</span></div>
                 </div>
                 <div class="gallery-card reveal">
                     <img src="https://images.unsplash.com/photo-1615900119312-2acd3a71f3ad?q=80&w=2070" alt="Погрузка">
-                    <div class="overlay"><h4 style="color:#fff">Безопасность</h4><span style="color:#aaa">Профессиональная погрузка</span></div>
+                    <div class="overlay"><h4 style="color:#fff">Любая сложность</h4><span style="color:#aaa">Кран + Лебедка</span></div>
+                </div>
+                <div class="gallery-card reveal">
+                    <img src="https://images.unsplash.com/photo-1599388168697-7e6cb9516629?q=80&w=2069" alt="Эвакуатор">
+                    <div class="overlay"><h4 style="color:#fff">Эвакуатор</h4><span style="color:#aaa">Сдвижная платформа</span></div>
                 </div>
             </div>
         </div>
@@ -237,9 +212,9 @@
     <section>
         <div class="container glass-card reveal">
             <div class="stats-box">
-                <div><span class="stat-num">15</span><span style="color:#8faab9">МИНУТ ПОДАЧА</span></div>
-                <div><span class="stat-num">24/7</span><span style="color:#8faab9">КРУГЛОСУТОЧНО</span></div>
-                <div><span class="stat-num">100%</span><span style="color:#8faab9">СТРАХОВКА</span></div>
+                <div><span class="stat-num">15</span><span style="color:#8faab9; font-size:0.8rem;">МИНУТ ПОДАЧА</span></div>
+                <div><span class="stat-num">24/7</span><span style="color:#8faab9; font-size:0.8rem;">РАБОТАЕМ В АЛМАТЫ</span></div>
+                <div><span class="stat-num">100%</span><span style="color:#8faab9; font-size:0.8rem;">ГАРАНТИЯ</span></div>
             </div>
         </div>
     </section>
@@ -250,12 +225,12 @@
                 <div class="contact-info">
                     <h2 class="platinum-text" style="margin-bottom:30px;">СВЯЗЬ</h2>
                     <div class="contact-row">
-                        <i class="fas fa-user-circle" style="font-size:2rem; margin-right:20px; color:#fff"></i>
-                        <div><h4 style="color:#888; font-size:0.8rem">Владелец</h4><div style="font-size:1.2rem; font-weight:700">Ержан</div></div>
+                        <i class="fas fa-user-circle" style="font-size:2rem; margin-right:15px; color:#fff"></i>
+                        <div><h4 style="color:#888; font-size:0.75rem">Владелец</h4><div style="font-size:1.1rem; font-weight:700">Ержан</div></div>
                     </div>
                     <div class="contact-row">
-                        <i class="fas fa-phone-alt" style="font-size:2rem; margin-right:20px; color:#fff"></i>
-                        <div><h4 style="color:#888; font-size:0.8rem">Телефон</h4><div><a href="tel:+77474640078" style="color:#fff; text-decoration:none; font-size:1.2rem; font-weight:700">+7 747 464-00-78</a></div></div>
+                        <i class="fas fa-phone-alt" style="font-size:2rem; margin-right:15px; color:#fff"></i>
+                        <div><h4 style="color:#888; font-size:0.75rem">Телефон</h4><div><a href="tel:+77474640078" style="color:#fff; text-decoration:none; font-size:1.1rem; font-weight:700">+7 747 464-00-78</a></div></div>
                     </div>
                 </div>
                 <form class="contact-form">
@@ -286,7 +261,6 @@
         window.addEventListener('scroll', revealOnScroll);
         revealOnScroll();
 
-        // Простой Tilt эффект (JS)
         document.querySelectorAll('[data-tilt]').forEach(card => {
             card.addEventListener('mousemove', (e) => {
                 const rect = card.getBoundingClientRect();
@@ -300,7 +274,7 @@
         });
 
         document.querySelector('form').addEventListener('submit', (e) => {
-            e.preventDefault(); alert('Заявка принята!');
+            e.preventDefault(); alert('Заявка принята! Ожидайте звонка.');
         });
     </script>
 </body>
