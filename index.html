@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -96,9 +95,16 @@
         }
         .btn-blue:hover { background: rgba(0, 195, 255, 0.15); color: #fff; box-shadow: 0 0 20px rgba(0, 195, 255, 0.4); }
 
-        /* Hero секция */
+        /* Hero секция - ИСПРАВЛЕНО ОТОБРАЖЕНИЕ */
         .hero {
-            height: 90vh; min-height: 550px; display: flex; align-items: center; justify-content: center; text-align: center;
+            /* Было height: 90vh - заменено на min-height и добавлены отступы */
+            min-height: 100vh; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            text-align: center;
+            padding-top: 120px; /* Отступ сверху, чтобы текст не обрезался */
+            padding-bottom: 60px;
         }
         .hero h1 { font-size: clamp(2.5rem, 6vw, 5rem); line-height: 1.05; margin-bottom: 25px; }
         .hero p { font-size: 1.1rem; color: #aab; margin-bottom: 45px; letter-spacing: 2px; text-transform: uppercase; line-height: 1.5; max-width: 800px; margin-left: auto; margin-right: auto;}
@@ -280,3 +286,4 @@
     </script>
 </body>
 </html>
+
